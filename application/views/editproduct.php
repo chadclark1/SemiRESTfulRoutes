@@ -19,6 +19,7 @@
 		<div class="container">
 
 			<h2>Edit <?php echo htmlspecialchars($product['name']); ?></h2>
+
 			
 			<form action="/products/edit_product/<?php echo htmlspecialchars($product['id']); ?>" method="post">
 				<fieldset class="form-group">
@@ -33,7 +34,7 @@
 				    <label for="name">Price</label>
 				    <input type="text" class="form-control" name="price" id="price" value="<?php echo htmlspecialchars($product['price']); ?>">
 				</fieldset>
-	
+
 		  		<button type="submit" class="btn btn-primary">Submit</button>
 		  		<!-- <input type="hidden" name="message-id" value="<?php echo $id?>"></input> -->
 			</form>
