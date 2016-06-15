@@ -26,19 +26,19 @@ class Product extends CI_Model {
 	}
 
 	function edit_product($product_info, $id){
-		
-		// $query = "UPDATE products SET (name, description, price, updated_at) VALUES (?,?,?,?) WHERE id = $id";
+
+		// var_dump($product_info, $id);
+		// die();
+
+		$query = "UPDATE products SET (name, description, price, updated_at) VALUES (?,?,?,?) WHERE id = $id";
 
 		$values = array($product_info['name'], $product_info['description'], $product_info['price'], date("m/d/Y"));
 
 		$query = "UPDATE products SET name = '$values[0]', description = '$values[1]', price = '$values[2]', updated_at = '$values[3]' WHERE id = $id";
+
 		// var_dump($query); die();
-
-
 		
-
-
-		return $this->db->query($query);
+		return $this->db->query($query, $values);
 	}
 
 }

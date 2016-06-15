@@ -18,6 +18,8 @@ class Products extends CI_Controller {
 
 	public function add(){
 
+		// You are duplicating entries to your database here.
+
 		$this->load->model('Product');
 		$product_info = $this->input->post();
 		$this->Product->add_product($product_info);
@@ -55,16 +57,17 @@ class Products extends CI_Controller {
 
 	public function edit($id)
 	{
+
+		// var_dump($id);
+		// die();
 		$this->load->model('Product');
 		$product = $this->Product->get_product_by_id($id);
-		// var_dump($product); die();
+		// var_dump($product);
+		// die();
 
 		$this->load->view('editproduct', array('product' => $product));
+		// redirect("/editproduct/".$id);
 	}
-
-
-
-
 
 
 	public function edit_product($id)
@@ -74,7 +77,12 @@ class Products extends CI_Controller {
 
 		$this->load->model('Product');
 		$product_info = $this->input->post();
-		$this->Product->edit_product($product_info, $id);
+
+		// Why are you referencing your model twice here, once with 2 parameters and then again with just one?
+
+		// $this->Product->edit_product($product_info, $id);
+
+		// Is this call to your model correct?
 		$product = $this->Product->edit_product($product_info);
 
 		redirect('/');
